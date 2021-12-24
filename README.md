@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# TypeScript GithubFinder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a TypeScript version of the "Github Finder" app from the great Udemy course
+[React Front To Back 2022](https://www.udemy.com/course/react-front-to-back-2022/).
+
+This is my first time ever using TypeScript so its quite likely that things are not great...
 
 ## Available Scripts
 
