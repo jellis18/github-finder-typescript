@@ -20,7 +20,7 @@ function User() {
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' });
     dispatchGetUserAndRepos(login!);
-  }, []);
+  }, [dispatch, login]);
 
   if (loading) {
     return <Spinner />;
