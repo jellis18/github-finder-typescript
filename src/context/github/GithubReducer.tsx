@@ -7,14 +7,16 @@ interface State {
   loading: boolean;
 }
 
-type Action =
+export type Action =
   | { type: 'GET_USERS'; payload: GithubUser[] }
-  | { type: 'GET_USER'; payload: GithubUser }
-  | { type: 'GET_USER_REPO'; payload: GithubUserRepo[] }
+  | {
+      type: 'GET_USER_AND_REPO';
+      payload: { user: GithubUser; repos: GithubUserRepo[] };
+    }
   | { type: 'SET_LOADING' }
   | { type: 'CLEAR_USERS' };
 
-const githubReducer = (state: State, action: Action) => {
+export const githubReducer = (state: State, action: Action) => {
   switch (action.type) {
     case 'GET_USERS':
       return {
@@ -33,21 +35,14 @@ const githubReducer = (state: State, action: Action) => {
         users: [],
         loading: false,
       };
-    case 'GET_USER':
+    case 'GET_USER_AND_REPO':
       return {
         ...state,
-        user: action.payload,
-        loading: false,
-      };
-    case 'GET_USER_REPO':
-      return {
-        ...state,
-        repos: action.payload,
+        user: action.payload.user,
+        repos: action.payload.repos,
         loading: false,
       };
     default:
       return state;
   }
 };
-
-export default githubReducer;
